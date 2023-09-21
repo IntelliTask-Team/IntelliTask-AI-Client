@@ -4,6 +4,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import ProjectDetailsPage from "./pages/ProjectDetailsPage";
+import AddProject from "./pages/AddProject";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/create-project" element={<AddProject />} />
         <Route path="/projects/:projectId" element={<ProjectDetailsPage />} />
       </Routes>
     </div>

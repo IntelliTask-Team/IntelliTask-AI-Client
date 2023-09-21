@@ -17,7 +17,7 @@ function Navbar() {
         <Link to="/">
           <p>Register</p>
         </Link>
-        <Link to="/">
+        <Link to="/create-project">
           <p>New AI Project</p>
         </Link>
       </div>
