@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import TaskCard from "../components/TaskCard";
 import TaskCreate from "../components/TaskCreate";
 import ProjectDelete from "../components/ProjectDelete";
@@ -34,7 +34,6 @@ function ProjectDetailsPage() {
 
   return (
     <>
-
       {/* ***** DISPLAY PROJECT DETAILS ***** */}
       {project && (
         <div>
@@ -62,6 +61,9 @@ function ProjectDetailsPage() {
         projectId={projectId}
         completeDeleteSuccess={completeDeleteSuccess}
       />
+
+      {/* ***** EDIT THE PROJECT ***** */}
+      <Link to={`/edit-project/${projectId}`}>Edit</Link>
     </>
   );
 }
