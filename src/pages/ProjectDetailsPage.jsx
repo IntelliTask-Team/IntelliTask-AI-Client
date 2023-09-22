@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import TaskCard from "../components/TaskCard";
 import TaskCreate from "../components/TaskCreate";
 import ProjectDelete from "../components/ProjectDelete";
@@ -28,13 +28,14 @@ function ProjectDetailsPage() {
   }, []);
 
   // ***** REDIRECT TO HOMEPAGE AFTER DELETING PROJECT *****
+  const navigate = useNavigate();
+
   const completeDeleteSuccess = () => {
-    window.location.href = "/";
+    navigate("/");
   };
 
   return (
     <>
-
       {/* ***** DISPLAY PROJECT DETAILS ***** */}
       {project && (
         <div>
