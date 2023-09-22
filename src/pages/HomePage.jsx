@@ -20,8 +20,8 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="HomePage">
-      <h1>Projects made with IntelliTask AI</h1>
+    <div className="HomePage max-w-7xl flex flex-col justify-center ">
+      <h1 className="text-red-500">Projects made with IntelliTask AI</h1>
 
       {projects.map((project) => (
         <ProjectCard key={project._id} {...project} />
