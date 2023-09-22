@@ -20,7 +20,7 @@ function AddProject(props) {
       .then((response) => {
         setTitle("");
         setDescription("");
-        navigate(`/`);
+        navigate(`/projects/${projectId}`);
       })
       .catch((error) => console.log(error));
   };
