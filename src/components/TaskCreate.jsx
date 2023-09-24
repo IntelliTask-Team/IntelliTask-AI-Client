@@ -4,12 +4,16 @@ import { useState } from "react";
 
 const API_URL = "http://localhost:5005";
 
-function TaskCreate({ projectId, updateTasks }) {
+function TaskCreate({ projectId, updateTasks, currentOrder }) {
   const [taskDescription, setTaskDescription] = useState('');
 
-  const handleAddTask = () => {
+  const handleAddTask = (event) => {
+    event.preventDefault();
     axios
-      .post(`${API_URL}/api/${projectId}/tasks`, { description: taskDescription })
+      .post(`${API_URL}/api/${projectId}/tasks`, {
+        description: taskDescription,
+        order: currentOrder,
+      })
       .then(() => {
         setTaskDescription('');
         updateTasks();
@@ -19,13 +23,15 @@ function TaskCreate({ projectId, updateTasks }) {
 
   return (
     <div>
-      <input
-        type="text"
-        value={taskDescription}
-        onChange={(e) => setTaskDescription(e.target.value)}
-        placeholder="Add new task"
-      />
-      <button onClick={handleAddTask}>Add</button>
+      <form onSubmit={handleAddTask}>
+        <input
+          type="text"
+          value={taskDescription}
+          onChange={(e) => setTaskDescription(e.target.value)}
+          placeholder="Add new task"
+        />
+        <button type="submit">Add</button>
+      </form>
     </div>
   );
 }

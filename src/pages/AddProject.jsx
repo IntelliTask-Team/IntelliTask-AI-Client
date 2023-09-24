@@ -20,6 +20,9 @@ function AddProject(props) {
       .then((response) => {
         setTitle("");
         setDescription("");
+
+        const projectId = response.data._id;
+
         navigate(`/projects/${projectId}`);
       })
       .catch((error) => console.log(error));
