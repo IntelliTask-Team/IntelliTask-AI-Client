@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-
+import { useParams, useNavigate, Link } from "react-router-dom";
 import TaskListDnD from "../components/TaskListDnD";
+import TaskCard from "../components/TaskCard";
 import TaskCreate from "../components/TaskCreate";
 import ProjectDelete from "../components/ProjectDelete";
 import Ai from "../components/Ai";
@@ -83,6 +83,9 @@ function ProjectDetailsPage() {
         projectId={projectId}
         completeDeleteSuccess={completeDeleteSuccess}
       />
+
+      {/* ***** EDIT THE PROJECT ***** */}
+      <Link to={`/edit-project/${projectId}`}>Edit</Link>
     </>
   );
 }
