@@ -2,25 +2,34 @@ import axios from "axios";
 
 const API_URL = "http://localhost:5005";
 
-function TaskCard(props) {
-    const { description, _id } = props.task;
+function TaskCard({ task, tasks, updateTasks, provided, innerRef }) {
+  const { description, _id } = task;
 
-    // ***** DELETE TASK *****
-    const handleDelete = () => {
-        axios.delete(`${API_URL}/api/tasks/${_id}`)
-        .then(() => {
-            props.updateTasks();
-        })
-        .catch((error) => console.log(error));
-    };
+  // ***** DELETE TASK *****
+  const handleDelete = () => {
+    axios.delete(`${API_URL}/api/tasks/${_id}`)
+    .then(() => {
+      console.log("Task deleted from backend. Now updating frontend.");
+      // Filter out the deleted task from the current task list
+      const updatedTasks = tasks.filter(task => task._id !== _id);
+      console.log("Updated tasks after deletion:", updatedTasks);
+      updateTasks(updatedTasks); // Update parent's task state with this new list
+    })
+    .catch((error) => console.log(error));
+  }; 
 
-    return (
-      <div>
-        {/* Added the span inside the p just for our view now, but might be nicer to have this in a separate line for styling */}
-        <p>{description}
-        <span onClick={handleDelete}>🗑️</span></p> 
-      </div>
-    );
+  return (
+    <div
+      ref={innerRef}
+      {...provided.draggableProps}
+    >
+      <p>
+        <span {...provided.dragHandleProps}>✴️</span>
+        {description}
+        <span onClick={handleDelete}>🗑️</span>
+      </p>
+    </div>
+  );
 }
 
 export default TaskCard;

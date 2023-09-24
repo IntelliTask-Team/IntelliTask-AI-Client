@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import TaskCard from "../components/TaskCard";
+
+import TaskListDnD from "../components/TaskListDnD";
 import TaskCreate from "../components/TaskCreate";
 import ProjectDelete from "../components/ProjectDelete";
 import Ai from "../components/Ai";
@@ -34,6 +35,18 @@ function ProjectDetailsPage() {
     navigate("/");
   };
 
+  // ***** DRAG AND DROP UPDATE FRONT & BACKEND *****
+  const handleTasksUpdate = (newTasksList) => {
+    setProject({ ...project, tasks: newTasksList }); // update frontend
+
+    // Make API call to update tasks in the backend
+    axios
+      .put(`${API_URL}/api/tasks/reorder`, { reorderedTasks: newTasksList })
+      .then((response) => console.log("Tasks reordered successfully"))
+      .catch((error) => console.log(error));
+  };
+
+
   return (
     <>
       {/* ***** DISPLAY PROJECT DETAILS ***** */}
@@ -44,16 +57,23 @@ function ProjectDetailsPage() {
         </div>
       )}
 
-      {/* ***** DISPLAY TASKS ***** */}
+      {/* ***** DISPLAY TASKS WITH DRAG AND DROP ***** */}
       {project && project.tasks && (
-        <div>
-          {project.tasks.map((task) => (
-            <TaskCard key={task._id} task={task} updateTasks={getProject} /> // refresh the project data after deleting task
-          ))}
-          <TaskCreate projectId={projectId} updateTasks={getProject} />{" "}
-          {/* refresh the project after adding new task */}
-        </div>
+        <TaskListDnD tasks={project.tasks} updateTasks={handleTasksUpdate} />
       )}
+
+      {/* ***** CREATE NEW TASK ***** */}
+      {project && 
+    <TaskCreate
+        projectId={projectId}
+        updateTasks={getProject}
+        currentOrder={
+            project.tasks && project.tasks.length > 0
+            ? project.tasks[project.tasks.length - 1].order + 1
+            : 0
+        }
+    />
+}
 
       {/* ***** DISPLAY AI RESPONSE ***** */}
       <Ai />
