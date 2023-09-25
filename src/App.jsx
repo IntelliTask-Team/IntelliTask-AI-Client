@@ -12,7 +12,7 @@ import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
-    <div>
+    <div className="bg-beige w-full flex flex-col items-center min-h-screen">
       <Navbar />
 
       <Routes>
