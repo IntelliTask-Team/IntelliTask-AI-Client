@@ -49,7 +49,7 @@ function Navbar() {
         <div>
           <Link
             to={`/create-project`}
-            className="inline-block text-sm px-4 py-2 leading-none font-medium border rounded bg-white text-emerald-800 border-transparent hover:border-white hover:text-white hover:bg-transparent mt-4 lg:mt-0"
+            className="inline-block text-sm px-4 py-2 leading-none font-medium border rounded bg-vert text-white border-transparent hover:border-white hover:text-white hover:bg-transparent mt-4 lg:mt-0"
           >
             New AI Project
           </Link>

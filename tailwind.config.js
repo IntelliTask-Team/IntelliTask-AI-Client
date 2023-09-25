@@ -11,6 +11,9 @@ export default {
       },
       colors: {
         jaune: "#d79731",
+        vert: "#365f4a",
+        beige: "#f7f4ed",
+        sapin: "#274536",
       },
     },
   },
