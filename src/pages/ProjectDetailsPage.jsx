@@ -6,10 +6,12 @@ import TaskCard from "../components/TaskCard";
 import TaskCreate from "../components/TaskCreate";
 import ProjectDelete from "../components/ProjectDelete";
 import Ai from "../components/Ai";
+import ProjectEdit from "../components/ProjectEdit";
 
 // ***** GET PROJECT DETAILS FROM API *****
 function ProjectDetailsPage() {
   const [project, setProject] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
   const { projectId } = useParams();
 
   const getProject = () => {
@@ -46,13 +48,39 @@ function ProjectDetailsPage() {
       .catch((error) => console.log(error));
   };
 
+    // ***** EDIT DESCRIPTION & TITLE INLINE *****
+  const handleEditSave = (newTitle, newDescription) => {
+    const updatedProject = {
+      ...project,
+      title: newTitle,
+      description: newDescription,
+    };
+    setProject(updatedProject);
+    axios
+      .put(
+        `${import.meta.env.VITE_API_URL}/api/projects/${project._id}`,
+        updatedProject
+      )
+      .then(() => {
+        setIsEditing(false);
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <>
       {/* ***** DISPLAY PROJECT DETAILS ***** */}
       {project && (
         <div>
-          <h1>{project.title}</h1>
-          <p>{project.description}</p>
+          {isEditing ? (
+            <ProjectEdit project={project} onSave={handleEditSave} />
+          ) : (
+            <>
+              <h1>{project.title}</h1>
+              <p>{project.description}</p>
+              <button onClick={() => setIsEditing(true)}>Edit</button>
+            </>
+          )}
         </div>
       )}
 
@@ -82,9 +110,6 @@ function ProjectDetailsPage() {
         projectId={projectId}
         completeDeleteSuccess={completeDeleteSuccess}
       />
-
-      {/* ***** EDIT THE PROJECT ***** */}
-      <Link to={`/edit-project/${projectId}`}>Edit</Link>
     </>
   );
 }
