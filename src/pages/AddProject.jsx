@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
-
 function AddProject(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -16,7 +14,7 @@ function AddProject(props) {
     const requestBody = { title, description };
 
     axios
-      .post(`${API_URL}/api/projects`, requestBody)
+      .post(`${import.meta.env.VITE_API_URL}/api/projects`, requestBody)
       .then((response) => {
         setTitle("");
         setDescription("");

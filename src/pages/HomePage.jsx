@@ -4,14 +4,12 @@ import { Link } from "react-router-dom";
 
 import ProjectCard from "../components/ProjectCard";
 
-const API_URL = "http://localhost:5005";
-
 function HomePage() {
   const [projects, setProjects] = useState([]);
 
   const getAllProjects = () => {
     axios
-      .get(`${API_URL}/api/projects`)
+      .get(`${import.meta.env.VITE_API_URL}/api/projects`)
       .then((response) => setProjects(response.data))
       .catch((error) => console.log(error));
   };

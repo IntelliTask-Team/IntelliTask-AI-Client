@@ -1,10 +1,9 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
-
 function ProjectDelete({ projectId, completeDeleteSuccess }) {
   const deleteProject = () => {
-    axios.delete(`${API_URL}/api/projects/${projectId}`)
+    axios
+      .delete(`${import.meta.env.VITE_API_URL}/api/projects/${projectId}`)
       .then(() => {
         if (completeDeleteSuccess) completeDeleteSuccess();
       })

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
-
 function Ai() {
   const [response, setResponse] = useState(null);
   const [apiCalled, setApiCalled] = useState(false);
@@ -11,7 +9,7 @@ function Ai() {
     if (!apiCalled) {
       const prompt = "Tell me a super short joke about coding";
       axios
-        .post(`${API_URL}/api/openai`, { prompt })
+        .post(`${import.meta.env.VITE_API_URL}/api/openai`, { prompt })
         .then((apiResponse) => {
           setResponse(apiResponse.data.choices[0].message.content);
           setApiCalled(true);
