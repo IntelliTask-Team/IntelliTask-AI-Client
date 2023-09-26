@@ -10,6 +10,7 @@ import EditProjectPage from "./pages/EditProjectPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import IsAnon from "./components/IsAnon";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -21,9 +22,25 @@ function App() {
         <Route path="/create-project" element={<AddProject />} />
         <Route path="/projects/:projectId" element={<ProjectDetailsPage />} />
         <Route path="/edit-project/:projectId" element={<EditProjectPage />} />
-        <Route path="/signup" element={<IsAnon><SignupPage/></IsAnon>} />
-        <Route path="/login" element={<IsAnon><LoginPage /></IsAnon>} />
+        <Route
+          path="/signup"
+          element={
+            <IsAnon>
+              <SignupPage />
+            </IsAnon>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <IsAnon>
+              <LoginPage />
+            </IsAnon>
+          }
+        />
       </Routes>
+
+      <Footer />
     </div>
   );
 }
