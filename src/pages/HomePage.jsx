@@ -22,7 +22,7 @@ function HomePage() {
 
   return (
     <div className="HomePage relative pb-20 px-5 md:px-10 w-full 2xl:w-1/2 max-w-4xl">
-      <h1 className="mt-20 mb-5 text-3xl font-bold tracking-tight text-gray-900 text-center text-sapin">
+      <h1 className="mt-20 mb-5 text-3xl font-bold tracking-tight text-gray-900 text-center">
         AI Powered Projects
       </h1>
       <Link to={`/`}>
