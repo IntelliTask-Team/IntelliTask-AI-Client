@@ -68,7 +68,7 @@ function Navbar() {
             <>
               <Link
                 to={`/create-project`}
-                className="inline-block text-sm px-4 py-2 leading-none font-medium border rounded bg-vert text-white border-transparent hover:border-white hover:text-white hover:bg-transparent mt-4 lg:mt-0"
+                className="inline-block text-sm px-4 py-2 leading-none font-medium border rounded bg-vert text-white border-transparent hover:bg-emerald-700 mt-4 lg:mt-0"
               >
                 New AI Project
               </Link>
@@ -80,7 +80,7 @@ function Navbar() {
             <>
               <Link
                 to={`/login`}
-                className="inline-block text-sm px-4 py-2 leading-none font-medium border rounded bg-vert text-white border-transparent hover:border-white hover:text-white hover:bg-transparent mt-4 lg:mt-0"
+                className="inline-block text-sm px-4 py-2 leading-none font-medium border rounded bg-vert text-white border-transparent hover:bg-emerald-700 mt-4 lg:mt-0"
               >
                 New AI Project
               </Link>

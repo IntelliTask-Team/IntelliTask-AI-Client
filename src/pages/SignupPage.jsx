@@ -34,31 +34,69 @@ function SignupPage(props) {
   };
 
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+    <div className="SignupPage w-full bg-white rounded-lg shadow sm:max-w-md md:mt-28">
+      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+          Create an account
+        </h1>
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+        <form onSubmit={handleSignupSubmit}>
+          <div className="pb-2">
+            <label>Email</label>
+          </div>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleEmail}
+            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-5"
+            placeholder="yourname@mail.com"
+          />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+          <div className="pb-2">
+            <label>Password</label>
+          </div>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={handlePassword}
+            placeholder="• • • • • • • •"
+            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-5"
+          />
 
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
+          <div className="pb-2">
+            <label>Username</label>
+          </div>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleName}
+            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-8"
+            placeholder="Jane Doe"
+          />
 
-        <button type="submit">Sign Up</button>
-      </form>
+          <button
+            type="submit"
+            className="w-full text-white bg-vert hover:bg-emerald-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+          >
+            Sign Up
+          </button>
+        </form>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+        <p className="text-sm font-light text-gray-500">
+          Already have account ?
+          <a
+            href="/login"
+            className="font-medium text-primary-600 hover:underline pl-2"
+          >
+            Register
+          </a>
+        </p>
+      </div>
     </div>
   );
 }
