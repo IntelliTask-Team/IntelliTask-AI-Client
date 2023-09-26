@@ -35,7 +35,7 @@ function SignupPage(props) {
 
   return (
     <div className="SignupPage w-full bg-white rounded-lg shadow sm:max-w-md md:mt-28">
-      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+      <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
           Create an account
         </h1>
