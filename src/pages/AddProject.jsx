@@ -58,7 +58,7 @@ function AddProject(props) {
             placeholder="Write your project description as if you're trying to convince a skeptical robot that it's worth their time. This robot has a penchant for efficiency and a tendency to question everything. So, be crystal clear about your project's objectives and benefits."
             className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-5"
           />
-          <div class="w-full flex items-center justify-center">
+          <div className="w-full flex items-center justify-center">
             <button
               type="submit"
               className="w-1/2 md:w-1/4 place-content-center text-white bg-vert hover:bg-emerald-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
