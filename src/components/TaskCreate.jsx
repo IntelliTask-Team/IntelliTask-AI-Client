@@ -2,20 +2,18 @@
 import axios from "axios";
 import { useState } from "react";
 
-const API_URL = "http://localhost:5005";
-
 function TaskCreate({ projectId, updateTasks, currentOrder }) {
-  const [taskDescription, setTaskDescription] = useState('');
+  const [taskDescription, setTaskDescription] = useState("");
 
   const handleAddTask = (event) => {
     event.preventDefault();
     axios
-      .post(`${API_URL}/api/${projectId}/tasks`, {
+      .post(`${import.meta.env.VITE_API_URL}/api/${projectId}/tasks`, {
         description: taskDescription,
         order: currentOrder,
       })
       .then(() => {
-        setTaskDescription('');
+        setTaskDescription("");
         updateTasks();
       })
       .catch((err) => console.log(err));

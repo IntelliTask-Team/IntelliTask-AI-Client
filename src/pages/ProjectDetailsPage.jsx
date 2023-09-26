@@ -7,8 +7,6 @@ import TaskCreate from "../components/TaskCreate";
 import ProjectDelete from "../components/ProjectDelete";
 import Ai from "../components/Ai";
 
-const API_URL = "http://localhost:5005";
-
 // ***** GET PROJECT DETAILS FROM API *****
 function ProjectDetailsPage() {
   const [project, setProject] = useState(null);
@@ -16,7 +14,7 @@ function ProjectDetailsPage() {
 
   const getProject = () => {
     axios
-      .get(`${API_URL}/api/projects/${projectId}`)
+      .get(`${import.meta.env.VITE_API_URL}/api/projects/${projectId}`)
       .then((response) => {
         const oneProject = response.data;
         setProject(oneProject);
@@ -41,11 +39,12 @@ function ProjectDetailsPage() {
 
     // Make API call to update tasks in the backend
     axios
-      .put(`${API_URL}/api/tasks/reorder`, { reorderedTasks: newTasksList })
+      .put(`${import.meta.env.VITE_API_URL}/api/tasks/reorder`, {
+        reorderedTasks: newTasksList,
+      })
       .then((response) => console.log("Tasks reordered successfully"))
       .catch((error) => console.log(error));
   };
-
 
   return (
     <>
@@ -63,17 +62,17 @@ function ProjectDetailsPage() {
       )}
 
       {/* ***** CREATE NEW TASK ***** */}
-      {project && 
-    <TaskCreate
-        projectId={projectId}
-        updateTasks={getProject}
-        currentOrder={
+      {project && (
+        <TaskCreate
+          projectId={projectId}
+          updateTasks={getProject}
+          currentOrder={
             project.tasks && project.tasks.length > 0
-            ? project.tasks[project.tasks.length - 1].order + 1
-            : 0
-        }
-    />
-}
+              ? project.tasks[project.tasks.length - 1].order + 1
+              : 0
+          }
+        />
+      )}
 
       {/* ***** DISPLAY AI RESPONSE ***** */}
       <Ai />
