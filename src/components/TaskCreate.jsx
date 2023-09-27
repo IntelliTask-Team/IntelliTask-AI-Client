@@ -1,27 +1,40 @@
-// TaskCreate.jsx
 import axios from "axios";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 function TaskCreate({ projectId, updateTasks, currentOrder }) {
+  const { isLoggedIn } = useContext(AuthContext);
   const storedToken = localStorage.getItem("authToken");
   const [taskDescription, setTaskDescription] = useState("");
 
   const handleAddTask = (event) => {
     event.preventDefault();
-    axios
-      .post(
-        `${import.meta.env.VITE_API_URL}/api/${projectId}/tasks`,
-        {
-          description: taskDescription,
-          order: currentOrder,
-        },
-        { headers: { Authorization: `Bearer ${storedToken}` } }
-      )
-      .then(() => {
-        setTaskDescription("");
-        updateTasks();
-      })
-      .catch((err) => console.log(err));
+
+    if (isLoggedIn) {
+      axios
+        .post(
+          `${import.meta.env.VITE_API_URL}/api/${projectId}/tasks`,
+          {
+            description: taskDescription,
+            order: currentOrder,
+          },
+          { headers: { Authorization: `Bearer ${storedToken}` } }
+        )
+        .then(() => {
+          setTaskDescription("");
+          updateTasks();
+        })
+        .catch((err) => console.log(err));
+    } else {
+      const demoTask = {
+        _id: new Date().toISOString(),
+        description: taskDescription,
+        order: currentOrder,
+      };
+      
+      updateTasks([demoTask]);
+      setTaskDescription("");
+    }
   };
 
   return (

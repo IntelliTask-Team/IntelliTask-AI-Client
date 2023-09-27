@@ -47,7 +47,7 @@ function ProjectDetailsPage() {
       .put(`${import.meta.env.VITE_API_URL}/api/tasks/reorder`, {
         reorderedTasks: newTasksList,
       })
-      .then((response) => console.log("Tasks reordered successfully"))
+      .then(response)
       .catch((error) => console.log(error));
   };
 
