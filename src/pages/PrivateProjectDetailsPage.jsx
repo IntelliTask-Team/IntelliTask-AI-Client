@@ -71,6 +71,8 @@ function PrivateProjectDetailsPage() {
 
   return (
     <>
+     <div className="w-full lg:w-1/2 bg-white rounded-lg shadow sm:max-w-md md:max-w-xl lg:max-w-2xl md:mt-28 mb-40">
+      <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
       {/* ***** DISPLAY PROJECT DETAILS ***** */}
       {project && (
         <div>
@@ -78,9 +80,9 @@ function PrivateProjectDetailsPage() {
             <ProjectEdit project={project} onSave={handleEditSave} />
           ) : (
             <>
-              <h1>{project.title}</h1>
-              <p>{project.description}</p>
-              <button onClick={() => setIsEditing(true)}>Edit</button>
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl mb-2">{project.title}</h1>
+              <p className="font-light mb-3">{project.description}</p>
+              <button className="inline-block max-h-8 text-sm px-4 py-2 leading-none font-medium border rounded bg-stone-300 text-stone-500 hover:text-stone-800 mt-4 lg:mt-0 mb-4" onClick={() => setIsEditing(true)}>Edit</button>
             </>
           )}
         </div>
@@ -112,6 +114,8 @@ function PrivateProjectDetailsPage() {
         projectId={projectId}
         completeDeleteSuccess={completeDeleteSuccess}
       />
+      </div>
+      </div>
     </>
   );
 }
