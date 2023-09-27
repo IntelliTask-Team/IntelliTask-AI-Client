@@ -13,7 +13,14 @@ function ProjectDelete({ projectId, completeDeleteSuccess }) {
       .catch((error) => console.log(error));
   };
 
-  return <button onClick={deleteProject}>Delete Project</button>;
+  return (
+    <button
+      onClick={deleteProject}
+      className="inline-block max-h-8 text-sm px-4 py-2 leading-none font-medium border rounded bg-rouge text-white hover:bg-red-700"
+    >
+      Delete Project
+    </button>
+  );
 }
 
 export default ProjectDelete;

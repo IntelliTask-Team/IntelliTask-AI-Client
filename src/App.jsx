@@ -12,6 +12,8 @@ import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import IsAnon from "./components/IsAnon";
 import IsPrivate from "./components/IsPrivate";
+import Footer from "./components/Footer";
+
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
       <Navbar />
 
       <Routes>
+    
       <Route path="/" element={<HomePage />} />
           {/* LOGGED IN ROUTES */}
         <Route path="/projects" element={ <IsPrivate><PrivateProjectsPage />  </IsPrivate>} />
@@ -31,6 +34,8 @@ function App() {
         <Route path="/login" element={<IsAnon><LoginPage /></IsAnon>} />
 
       </Routes>
+
+      <Footer />
     </div>
   );
 }
