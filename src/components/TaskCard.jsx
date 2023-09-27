@@ -15,7 +15,6 @@ function TaskCard({ task, tasks, updateTasks, provided, innerRef }) {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then(() => {
-          console.log("Task deleted from backend. Now updating frontend.");
           updateTasksFrontend();
         })
         .catch((error) => console.log(error));
