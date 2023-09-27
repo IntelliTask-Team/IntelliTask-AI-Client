@@ -19,7 +19,7 @@ function TaskCard({ task, tasks, updateTasks, provided, innerRef }) {
 
   return (
     <div ref={innerRef} {...provided.draggableProps}>
-      <p className="flex flex-row mb-2">
+      <div className="flex flex-row mb-2">
         <span {...provided.dragHandleProps}>
           <img src="/images/drag.png" className="w-5 mr-2 cursor-pointer" />
         </span>
@@ -27,7 +27,7 @@ function TaskCard({ task, tasks, updateTasks, provided, innerRef }) {
         <span onClick={handleDelete}>
           <img src="/images/bin.png" className="w-5 ml-2 cursor-pointer" />
         </span>
-      </p>
+      </div>
     </div>
   );
 }

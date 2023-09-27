@@ -34,7 +34,7 @@ function HomePage() {
       </Link>
 
       {isLoading ? (
-        <div className="flex flex-col justify-start w-full mx-auto w-40">
+        <div className="flex flex-col justify-start mx-auto w-40">
           <img src="./images/waiting.gif" alt="Loading GIF" />
         </div>
       ) : (

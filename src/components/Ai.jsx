@@ -51,13 +51,19 @@ function Ai() {
 
     // Add the click event listener when the component mounts
     if (document.body.animate) {
-      document.querySelector("#API").addEventListener("click", pop);
+      const apiButton = document.querySelector("#API");
+      if (apiButton) {
+        apiButton.addEventListener("click", pop);
+      }
     }
 
     // Remove the click event listener when the component unmounts
     return () => {
       if (document.body.animate) {
-        document.querySelector("#API").removeEventListener("click", pop);
+        const apiButton = document.querySelector("#API");
+        if (apiButton) {
+          apiButton.removeEventListener("click", pop);
+        }
       }
     };
   }, []); // Empty dependency array means this effect runs once after initial render
