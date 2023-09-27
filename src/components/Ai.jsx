@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Ai({ projectDescription, projectTitle }) {
+  const storedToken = localStorage.getItem("authToken");
   const [response, setResponse] = useState(null);
   const [apiCalled, setApiCalled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -71,13 +72,15 @@ function Ai({ projectDescription, projectTitle }) {
   {
     /* ***** END OF ON CLICK ANIMATION MADNESS ***** */
   }
-
+  
   const handleApiCall = () => {
     if (!apiCalled) {
       setIsLoading(true);
       const prompt = `You are an expert project manager. I want to achieve a project called : ${projectTitle}. This is the description of this project : ${projectDescription}. I want you to give me a simple list of all the tasks that I need to adress to achieve it. Keep it short and efficient.`;
       axios
-        .post(`${import.meta.env.VITE_API_URL}/api/openai`, { prompt })
+      .post(`${import.meta.env.VITE_API_URL}/api/openai`, { prompt }, 
+      {headers: { Authorization: `Bearer ${storedToken}` }}
+        )
         .then((apiResponse) => {
           setResponse(apiResponse.data.choices[0].message.content);
           setApiCalled(true);

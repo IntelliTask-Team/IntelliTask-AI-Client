@@ -30,8 +30,7 @@ function LoginPage(props) {
 
         // Verify the token by sending a request
         // to the server's JWT validation endpoint.
-        authenticateUser();
-        navigate("/");
+        authenticateUser("/projects");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
@@ -41,7 +40,7 @@ function LoginPage(props) {
 
   return (
     <div className="LoginPage w-full bg-white rounded-lg shadow sm:max-w-md md:mt-28">
-      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+      <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
           Welcome back !
         </h1>
