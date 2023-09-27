@@ -13,7 +13,7 @@ function HomePage() {
       .get(`${import.meta.env.VITE_API_URL}/api/projects`)
       .then((response) => {
         setProjects(response.data);
-        //setIsLoading(false);
+        setIsLoading(false);
       })
       .catch((error) => console.log(error));
   };
