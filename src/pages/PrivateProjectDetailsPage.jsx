@@ -46,7 +46,8 @@ function PrivateProjectDetailsPage() {
       .put(`${import.meta.env.VITE_API_URL}/api/tasks/reorder`, {
         reorderedTasks: newTasksList}, {headers: { Authorization: `Bearer ${storedToken}` }}
       )
-      .then(response)
+      .then(responseData => {
+        console.log(responseData.data)})
       .catch((error) => console.log(error));
   };
 
