@@ -13,7 +13,7 @@ function HomePage() {
       .get(`${import.meta.env.VITE_API_URL}/api/projects`)
       .then((response) => {
         setProjects(response.data);
-        setIsLoading(false);
+        //setIsLoading(false);
       })
       .catch((error) => console.log(error));
   };
@@ -34,7 +34,7 @@ function HomePage() {
       </Link>
 
       {isLoading ? (
-        <div className="flex flex-col justify-start w-full mx-auto w-40">
+        <div className="flex flex-col justify-start mx-auto w-40">
           <img src="./images/waiting.gif" alt="Loading GIF" />
         </div>
       ) : (
