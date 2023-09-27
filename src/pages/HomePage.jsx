@@ -5,10 +5,6 @@ import { Link } from "react-router-dom";
 import ProjectCard from "../components/ProjectCard";
 
 function HomePage() {
-<<<<<<< HEAD
-
-=======
->>>>>>> origin
   return (
     <div className="HomePage relative pb-20 px-5 md:px-10 w-full 2xl:w-1/2 max-w-4xl mb-10">
       <h1 className="mt-20 mb-5 text-3xl font-bold tracking-tight text-gray-900 text-center">
