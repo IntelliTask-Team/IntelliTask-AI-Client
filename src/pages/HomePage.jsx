@@ -5,18 +5,6 @@ import { Link } from "react-router-dom";
 import ProjectCard from "../components/ProjectCard";
 
 function HomePage() {
-  // const [projects, setProjects] = useState([]);
-
-  // const getAllProjects = () => {
-  //   axios
-  //     .get(`${import.meta.env.VITE_API_URL}/api/projects`)
-  //     .then((response) => setProjects(response.data))
-  //     .catch((error) => console.log(error));
-  // };
-
-  // useEffect(() => {
-  //   getAllProjects();
-  // }, []);
 
   return (
     <div className="HomePage relative pb-20 px-5 md:px-10 w-full 2xl:w-1/2 max-w-4xl">
@@ -30,10 +18,6 @@ function HomePage() {
       </Link>
 
       <h2>PROJECTS WILL BE ADDED LATER</h2>
-      {/* THIS WILL BE ADDED LATER */}
-      {/* {projects.map((project) => (
-        <ProjectCard key={project._id} {...project} />
-      ))} */}
     </div>
   );
 }
