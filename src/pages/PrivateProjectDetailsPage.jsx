@@ -34,7 +34,7 @@ function PrivateProjectDetailsPage() {
   const navigate = useNavigate();
 
   const completeDeleteSuccess = () => {
-    navigate("/");
+    navigate("/projects");
   };
 
   // ***** DRAG AND DROP UPDATE FRONT & BACKEND *****
@@ -46,7 +46,7 @@ function PrivateProjectDetailsPage() {
       .put(`${import.meta.env.VITE_API_URL}/api/tasks/reorder`, {
         reorderedTasks: newTasksList}, {headers: { Authorization: `Bearer ${storedToken}` }}
       )
-      .then((response) => console.log("Tasks reordered successfully"))
+      .then(response)
       .catch((error) => console.log(error));
   };
 
