@@ -14,6 +14,7 @@ export default {
         vert: "#365f4a",
         beige: "#f7f4ed",
         sapin: "#274536",
+        rouge: "#d75731",
       },
     },
   },

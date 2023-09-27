@@ -81,7 +81,7 @@ function SignupPage(props) {
             type="submit"
             className="w-full text-white bg-vert hover:bg-emerald-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
           >
-            Sign Up
+            Register
           </button>
         </form>
 
@@ -93,7 +93,7 @@ function SignupPage(props) {
             href="/login"
             className="font-medium text-primary-600 hover:underline pl-2"
           >
-            Register
+            Log In
           </a>
         </p>
       </div>
