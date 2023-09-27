@@ -75,7 +75,7 @@ function Ai({ projectDescription, projectTitle }) {
   const handleApiCall = () => {
     if (!apiCalled) {
       setIsLoading(true);
-      const prompt = `You are an expert project manager. I want to achieve a project called : ${projectTitle}. This is the description of this project : ${projectDescription}. I want you to give me a simple list of all the tasks that I need to adress to achieve it. Keep it short and efficient.`;
+      const prompt = `You are an expert project manager. I aim to accomplish a project titled: ${projectTitle}. Here is the description of this project: ${projectDescription}. I would like you to provide me with a simple and efficient list of all the tasks I need to address to achieve it. You must respond in the language of the description. Keep it short and efficient.`;
       axios
         .post(`${import.meta.env.VITE_API_URL}/api/openai`, { prompt })
         .then((apiResponse) => {
@@ -101,7 +101,13 @@ function Ai({ projectDescription, projectTitle }) {
       ) : (
         response && (
           <div className="mb-3 mt-4">
-            <p className="font-light">{response}</p>
+            <ul>
+              {response.split("\n").map((task, index) => (
+                <li key={index} className="mb-2 font-light">
+                  {task}
+                </li>
+              ))}
+            </ul>
           </div>
         )
       )}
