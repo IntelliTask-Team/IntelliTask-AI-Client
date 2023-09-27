@@ -23,9 +23,9 @@ function HomePage() {
       <h1 className="mt-20 mb-5 text-3xl font-bold tracking-tight text-gray-900 text-center">
         AI Powered Projects
       </h1>
-      <Link to={`/`}>
+      <Link to={`/create-project`}>
         <p className="mb-20 text-xs font-bold tracking-tight text-gray-400 text-center">
-          HOW DOES IT WORKS?
+          CREATE A PROJECT
         </p>
       </Link>
 
