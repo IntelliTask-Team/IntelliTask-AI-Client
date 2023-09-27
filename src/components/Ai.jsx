@@ -29,7 +29,7 @@ function Ai() {
         Ask the AI for a project breakdown
       </h2>
       {isLoading ? (
-        <div className="flex flex-col justify-start w-full w-20">
+        <div className="flex flex-col justify-start w-20">
           <img src="../images/waiting.gif" alt="Loading GIF" />
         </div>
       ) : (
