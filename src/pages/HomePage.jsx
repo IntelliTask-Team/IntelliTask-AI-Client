@@ -16,6 +16,7 @@ function HomePage() {
         </p>
       </Link>
       <h2>PROJECTS WILL BE ADDED LATER</h2>
+      
     </div>
   );
 }
