@@ -3,7 +3,6 @@ import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import TaskCard from "./TaskCard";
 
 function TaskListDnD({ tasks, updateTasks }) {
-    
   // ***** DRAG AND DROP *****
   const handleDrop = (droppedItem) => {
     if (!droppedItem.destination) return; // check if item is dropped in valid area
@@ -16,7 +15,7 @@ function TaskListDnD({ tasks, updateTasks }) {
 
   return (
     <DragDropContext onDragEnd={handleDrop}>
-      <Droppable droppableId="tasks-container">
+      <Droppable droppableId="tasks-container" className="mt-0">
         {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>
             {tasks.map((task, index) => (
@@ -37,7 +36,7 @@ function TaskListDnD({ tasks, updateTasks }) {
         )}
       </Droppable>
     </DragDropContext>
-  )
+  );
 }
 
 export default TaskListDnD;

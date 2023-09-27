@@ -21,10 +21,21 @@ function Ai() {
   };
 
   return (
-    <div>
-      <h2>Ask our AI for help</h2>
-      {response && <p>Response from AI: {response}</p>}
-      <button onClick={handleApiCall}>Ask the AI</button>
+    <div className="mb-10">
+      <h2 className="text-xl font-semibold leading-tight tracking-tight text-gray-900 md:text-xl mb-2">
+        Ask the AI for a project breakdown
+      </h2>
+      {response && (
+        <div className="mb-3 mt-4">
+          <p className="font-light">{response}</p>
+        </div>
+      )}
+      <button
+        onClick={handleApiCall}
+        className="inline-block max-h-8 text-sm px-4 py-2 leading-none font-medium border rounded bg-vert text-white hover:bg-emerald-700 lg:mt-4"
+      >
+        Ask the AI
+      </button>
     </div>
   );
 }
