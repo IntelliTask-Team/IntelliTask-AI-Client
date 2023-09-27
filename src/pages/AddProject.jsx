@@ -13,8 +13,12 @@ function AddProject(props) {
 
     const requestBody = { title, description };
 
+    const storedToken = localStorage.getItem("authToken");
+
     axios
-      .post(`${import.meta.env.VITE_API_URL}/api/projects`, requestBody)
+      .post(`${import.meta.env.VITE_API_URL}/api/projects`, requestBody, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         setTitle("");
         setDescription("");

@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function Ai() {
+  const storedToken = localStorage.getItem("authToken");
   const [response, setResponse] = useState(null);
   const [apiCalled, setApiCalled] = useState(false);
-
+  
   const handleApiCall = () => {
     if (!apiCalled) {
       const prompt = "Tell me a super short joke about coding";
       axios
-        .post(`${import.meta.env.VITE_API_URL}/api/openai`, { prompt })
+      .post(`${import.meta.env.VITE_API_URL}/api/openai`, { prompt }, 
+      {headers: { Authorization: `Bearer ${storedToken}` }}
+        )
         .then((apiResponse) => {
           setResponse(apiResponse.data.choices[0].message.content);
           setApiCalled(true);

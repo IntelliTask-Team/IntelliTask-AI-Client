@@ -1,12 +1,15 @@
 import axios from "axios";
 
 function TaskCard({ task, tasks, updateTasks, provided, innerRef }) {
+  const storedToken = localStorage.getItem("authToken");
   const { description, _id } = task;
 
   // ***** DELETE TASK *****
   const handleDelete = () => {
     axios
-      .delete(`${import.meta.env.VITE_API_URL}/api/tasks/${_id}`)
+      .delete(`${import.meta.env.VITE_API_URL}/api/tasks/${_id}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then(() => {
         console.log("Task deleted from backend. Now updating frontend.");
         // Filter out the deleted task from the current task list

@@ -10,13 +10,16 @@ import ProjectEdit from "../components/ProjectEdit";
 
 // ***** GET PROJECT DETAILS FROM API *****
 function ProjectDetailsPage() {
+  const storedToken = localStorage.getItem("authToken");
   const [project, setProject] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const { projectId } = useParams();
 
   const getProject = () => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/projects/${projectId}`)
+      .get(`${import.meta.env.VITE_API_URL}/api/projects/${projectId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         const oneProject = response.data;
         setProject(oneProject);
@@ -48,7 +51,7 @@ function ProjectDetailsPage() {
       .catch((error) => console.log(error));
   };
 
-    // ***** EDIT DESCRIPTION & TITLE INLINE *****
+  // ***** EDIT DESCRIPTION & TITLE INLINE *****
   const handleEditSave = (newTitle, newDescription) => {
     const updatedProject = {
       ...project,

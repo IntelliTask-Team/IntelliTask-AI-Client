@@ -3,15 +3,20 @@ import axios from "axios";
 import { useState } from "react";
 
 function TaskCreate({ projectId, updateTasks, currentOrder }) {
+  const storedToken = localStorage.getItem("authToken");
   const [taskDescription, setTaskDescription] = useState("");
 
   const handleAddTask = (event) => {
     event.preventDefault();
     axios
-      .post(`${import.meta.env.VITE_API_URL}/api/${projectId}/tasks`, {
-        description: taskDescription,
-        order: currentOrder,
-      })
+      .post(
+        `${import.meta.env.VITE_API_URL}/api/${projectId}/tasks`,
+        {
+          description: taskDescription,
+          order: currentOrder,
+        },
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+      )
       .then(() => {
         setTaskDescription("");
         updateTasks();
