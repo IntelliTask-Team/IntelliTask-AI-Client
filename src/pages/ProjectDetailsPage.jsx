@@ -118,7 +118,12 @@ function ProjectDetailsPage() {
         )}
 
         {/* ***** DISPLAY AI RESPONSE ***** */}
-        <Ai />
+        {project && (
+          <Ai
+            projectDescription={project.description}
+            projectTitle={project.title}
+          />
+        )}
 
         {/* ***** DELETE THE PROJECT & ATTACHED TASKS BUTTON ***** */}
         <ProjectDelete

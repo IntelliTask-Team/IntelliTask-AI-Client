@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function Ai() {
+function Ai({ projectDescription, projectTitle }) {
   const [response, setResponse] = useState(null);
   const [apiCalled, setApiCalled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -75,7 +75,7 @@ function Ai() {
   const handleApiCall = () => {
     if (!apiCalled) {
       setIsLoading(true);
-      const prompt = "Tell me a super short joke about coding";
+      const prompt = `You are an expert project manager. I want to achieve a project called : ${projectTitle}. This is the description of this project : ${projectDescription}. I want you to give me a simple list of all the tasks that I need to adress to achieve it. Keep it short and efficient.`;
       axios
         .post(`${import.meta.env.VITE_API_URL}/api/openai`, { prompt })
         .then((apiResponse) => {
