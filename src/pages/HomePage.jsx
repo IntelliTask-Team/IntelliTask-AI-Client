@@ -6,11 +6,15 @@ import ProjectCard from "../components/ProjectCard";
 
 function HomePage() {
   const [projects, setProjects] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getAllProjects = () => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/api/projects`)
-      .then((response) => setProjects(response.data))
+      .then((response) => {
+        setProjects(response.data);
+        setIsLoading(false);
+      })
       .catch((error) => console.log(error));
   };
 
@@ -29,9 +33,15 @@ function HomePage() {
         </p>
       </Link>
 
-      {projects.map((project) => (
-        <ProjectCard key={project._id} {...project} />
-      ))}
+      {isLoading ? (
+        <div className="flex flex-col justify-start w-full mx-auto w-40">
+          <img src="./images/waiting.gif" alt="Loading GIF" />
+        </div>
+      ) : (
+        projects.map((project) => (
+          <ProjectCard key={project._id} {...project} />
+        ))
+      )}
     </div>
   );
 }
