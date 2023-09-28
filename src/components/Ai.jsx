@@ -97,8 +97,8 @@ function Ai({ projectDescription, projectTitle, projectTasks }) {
           setApiCalled(true);
           setIsLoading(false);
         })
-        .catch((error) => {
-          console.error("OpenAI Error : ", error);
+        .catch((err) => {
+          console.err("OpenAI Error : ", err);
         });
     }
   };

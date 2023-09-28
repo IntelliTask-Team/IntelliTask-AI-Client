@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function SignupPage(props) {
@@ -27,8 +27,8 @@ function SignupPage(props) {
       .then((response) => {
         navigate("/login");
       })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
+      .catch((err) => {
+        const errorDescription = err.response.data.message;
         setErrorMessage(errorDescription);
       });
   };

@@ -25,8 +25,8 @@ function PrivateProjectDetailsPage() {
         setProject(oneProject);
         setIsLoading(false);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
         setIsLoading(false); 
       });
   };
@@ -58,7 +58,7 @@ function PrivateProjectDetailsPage() {
       .then((responseData) => {
         console.log(responseData.data);
       })
-      .catch((error) => console.log(error));
+      .catch((err) => console.log(err));
   };
 
   // ***** EDIT DESCRIPTION & TITLE INLINE *****
@@ -78,7 +78,7 @@ function PrivateProjectDetailsPage() {
       .then(() => {
         setIsEditing(false);
       })
-      .catch((error) => console.log(error));
+      .catch((err) => console.log(err));
   };
 
   return (

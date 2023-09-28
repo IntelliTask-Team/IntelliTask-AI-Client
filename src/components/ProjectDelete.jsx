@@ -14,8 +14,8 @@ function ProjectDelete({ projectId, completeDeleteSuccess }) {
         if (completeDeleteSuccess) completeDeleteSuccess();
         setShowModal(false);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
         setShowModal(false);
       });
   };
