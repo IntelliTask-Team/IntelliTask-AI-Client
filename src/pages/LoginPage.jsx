@@ -1,14 +1,11 @@
 import { useState, useContext } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
-
-  const navigate = useNavigate();
 
   /*  UPDATE - get authenticateUser from the context */
   const { storeToken, authenticateUser } = useContext(AuthContext);
@@ -31,8 +28,8 @@ function LoginPage(props) {
         // to the server's JWT validation endpoint.
         authenticateUser("/projects");
       })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
+      .catch((err) => {
+        const errorDescription = err.response.data.message;
         setErrorMessage(errorDescription);
       });
   };
