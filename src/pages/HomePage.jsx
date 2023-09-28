@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import ProjectCard from "../components/ProjectCard";
 
@@ -27,6 +28,11 @@ function PrivateProjectsPage() {
       <h1 className="mt-20 mb-5 text-3xl font-bold tracking-tight text-gray-900 text-center">
         AI Powered Projects
       </h1>
+      <Link to={`/signup`}>
+        <p className="mb-20 text-xs font-bold tracking-tight text-gray-400 text-center">
+          CREATE YOUR OWN PROJECTS
+        </p>
+      </Link>
 
       {projects.map((project) => (
         <ProjectCard key={project._id} {...project} />
