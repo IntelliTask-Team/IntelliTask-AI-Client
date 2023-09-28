@@ -7,7 +7,7 @@ function DemoAiResponse() {
   const handleAskAI = () => {
     setIsLoading(true);
     setTimeout(() => {
-      const demoResponse = `This is a demo project. To get some real AI insight for your own projects and unlock the full experience, create a free account today !`;
+      const demoResponse = `This is a demo project. To get some real AI insight for your own projects and unlock the full experience, create a free account.`;
       setIsLoading(false);
       setResponse(demoResponse);
     }, 1000);
