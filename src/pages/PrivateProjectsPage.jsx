@@ -3,19 +3,26 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 import ProjectCard from "../components/ProjectCard";
-// import { AuthContext } from "../context/auth.context";
 
 function PrivateProjectsPage() {
   const storedToken = localStorage.getItem("authToken");
   const [projects, setProjects] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getAllProjects = () => {
+    setIsLoading(true);
     axios
       .get(`${import.meta.env.VITE_API_URL}/api/projects`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
-      .then((response) => setProjects(response.data))
-      .catch((error) => console.log(error));
+      .then((response) => {
+        setProjects(response.data);
+        setIsLoading(false); 
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -33,9 +40,13 @@ function PrivateProjectsPage() {
         </p>
       </Link>
 
-      {projects.map((project) => (
-        <ProjectCard key={project._id} {...project} />
-      ))}
+      {isLoading ? (
+        <div className="flex flex-col justify-center m-auto w-20">
+          <img src="/images/waiting.gif" alt="Loading GIF" />
+        </div>
+      ) : (
+        projects.map((project) => <ProjectCard key={project._id} {...project} />)
+      )}
     </div>
   );
 }

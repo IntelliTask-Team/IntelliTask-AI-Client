@@ -13,6 +13,7 @@ function PrivateProjectDetailsPage() {
   const [project, setProject] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const { projectId } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
 
   const getProject = () => {
     axios
@@ -22,8 +23,12 @@ function PrivateProjectDetailsPage() {
       .then((response) => {
         const oneProject = response.data;
         setProject(oneProject);
+        setIsLoading(false);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false); 
+      });
   };
 
   useEffect(() => {
@@ -78,6 +83,11 @@ function PrivateProjectDetailsPage() {
 
   return (
     <>
+      {isLoading ? (
+        <div className="flex flex-col justify-center m-auto w-20">
+          <img src="/images/waiting.gif" alt="Loading GIF" />
+        </div>
+      ) : (
       <div className="w-full lg:w-1/2 bg-white rounded-lg shadow sm:max-w-md md:max-w-xl lg:max-w-2xl md:mt-28 mb-40">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
           {/* ***** DISPLAY PROJECT DETAILS ***** */}
@@ -148,6 +158,7 @@ function PrivateProjectDetailsPage() {
           />
         </div>
       </div>
+      )}
     </>
   );
 }
