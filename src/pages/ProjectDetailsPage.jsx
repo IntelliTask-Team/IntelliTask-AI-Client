@@ -105,7 +105,8 @@ function ProjectDetailsPage() {
           <TaskListDnD tasks={project.tasks} updateTasks={handleTasksUpdate} />
         ) : (
           <p className="text-sm font-light text-gray-500 mt-0">
-            You don't have any tasks yet
+            You don't have any tasks yet, get inspired by clicking "Ask the AI"
+            below.
           </p>
         )}
 

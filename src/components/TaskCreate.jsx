@@ -45,7 +45,7 @@ function TaskCreate({ projectId, updateTasks, currentOrder }) {
             type="text"
             value={taskDescription}
             onChange={(e) => setTaskDescription(e.target.value)}
-            placeholder="Describe a task"
+            placeholder="Name a task, you can hit enter to submit."
             className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-3/4 p-2.5 mr-5"
           />
           <button
