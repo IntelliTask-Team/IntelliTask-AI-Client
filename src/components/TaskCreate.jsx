@@ -50,7 +50,7 @@ function TaskCreate({ projectId, updateTasks, currentOrder }) {
           />
           <button
             type="submit"
-            className="inline-block max-h-8 text-sm px-4 py-2 leading-none font-medium border rounded bg-vert text-white hover:bg-emerald-700 mt-4 lg:mt-0"
+            className="inline-block max-h-8 text-sm px-4 py-2 leading-none font-medium border rounded bg-vert text-white hover:bg-emerald-700 mt-4 md:mt-0"
           >
             Add
           </button>
