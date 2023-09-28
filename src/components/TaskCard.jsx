@@ -55,20 +55,26 @@ function TaskCard({ task, tasks, updateTasks, provided, innerRef }) {
       ref={innerRef}
       {...provided.draggableProps}
     >
-      <div className="flex flex-row items-center flex-grow">
-        <span {...provided.dragHandleProps}>
-          <img src="/images/drag.png" className="w-5 mr-2 cursor-pointer" />
-        </span>
-        <input 
+      <div className="flex flex-row w-full items-center place-content-between">
+        <div className="flex flex-row items-center w-full">
+          <div className="w-5 mr-2 cursor-pointer">
+            <span {...provided.dragHandleProps}>
+              <img src="/images/drag.png" />
+            </span>
+          </div>
+          <input 
         type="checkbox" 
         checked={task.completed} 
         onChange={handleCheckboxChange} 
       />
-      <div style={{textDecoration: task.completed ? 'line-through' : 'none'}}>{description}</div>
-      </div>
-      <span onClick={handleDelete}>
-        <img src="/images/bin.png" className="w-5 ml-2 cursor-pointer" />
-      </span>
+          <p className="w-full" style={{textDecoration: task.completed ? 'line-through' : 'none'}}>{description}</p>
+        </div>
+        <div className="w-5 ml-4 cursor-pointer" >
+          <span onClick={handleDelete}>
+            <img src="/images/bin.png" />
+          </span>
+        </div>
+        </div>
     </div>
   );
 }
