@@ -51,7 +51,7 @@ function TaskCard({ task, tasks, updateTasks, provided, innerRef }) {
 
   return (
     <div
-      className="flex flex-row items-center mb-2 border-b pb-2"
+      className="group flex flex-row items-center mb-2 border-b pb-2"
       ref={innerRef}
       {...provided.draggableProps}
     >
@@ -66,10 +66,11 @@ function TaskCard({ task, tasks, updateTasks, provided, innerRef }) {
         type="checkbox" 
         checked={task.completed} 
         onChange={handleCheckboxChange} 
+        className="mr-2"
       />
           <p className="w-full" style={{textDecoration: task.completed ? 'line-through' : 'none'}}>{description}</p>
         </div>
-        <div className="w-5 ml-4 cursor-pointer" >
+        <div className="group-hover:opacity-100 opacity-0 w-5 ml-4 cursor-pointer" >
           <span onClick={handleDelete}>
             <img src="/images/bin.png" />
           </span>
