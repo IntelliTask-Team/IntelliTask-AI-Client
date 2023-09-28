@@ -36,14 +36,14 @@ function AddProject(props) {
   };
 
   return (
-    <div className="AddProject w-full lg:w-1/2 bg-white rounded-lg shadow sm:max-w-md md:max-w-xl lg:max-w-2xl md:mt-28">
-      <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-        {isLoading ? (
-          <div className="flex flex-col justify-center m-auto w-20">
-            <img src="/images/waiting.gif" alt="Loading GIF" />
-          </div>
-        ) : (
-          <>
+    <>
+      {isLoading ? (
+        <div className="flex flex-col justify-center m-auto w-20">
+          <img src="/images/waiting.gif" alt="Loading GIF" />
+        </div>
+      ) : (
+        <div className="AddProject w-full lg:w-1/2 bg-white rounded-lg shadow sm:max-w-md md:max-w-xl lg:max-w-2xl md:mt-28">
+          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
               Create a new project
             </h1>
@@ -82,10 +82,10 @@ function AddProject(props) {
                 </button>
               </div>
             </form>
-          </>
-        )}
-      </div>
-    </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
