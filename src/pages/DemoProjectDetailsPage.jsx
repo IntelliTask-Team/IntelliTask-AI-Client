@@ -49,7 +49,7 @@ function DemoProjectDetailsPage() {
 
   return (
     <>
-      <div className="w-full lg:w-1/2 bg-white rounded-lg shadow sm:max-w-md md:max-w-xl lg:max-w-2xl md:mt-28 mb-40">
+      <div className="w-full lg:w-1/2 bg-white rounded-lg shadow  md:max-w-xl lg:max-w-2xl md:mt-28 mb-40">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
           {/* ***** DISPLAY PROJECT DETAILS ***** */}
           {project && (

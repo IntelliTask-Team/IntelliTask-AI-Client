@@ -30,19 +30,25 @@ function TaskCard({ task, tasks, updateTasks, provided, innerRef }) {
 
   return (
     <div
-      className="flex flex-row items-center mb-2 border-b pb-2"
+      className="flex flex-row w-full items-center mb-2 border-b pb-2"
       ref={innerRef}
       {...provided.draggableProps}
     >
-      <div className="flex flex-row items-center flex-grow">
-        <span {...provided.dragHandleProps}>
-          <img src="/images/drag.png" className="w-5 mr-2 cursor-pointer" />
-        </span>
-        <div>{description}</div>
+      <div className="flex flex-row w-full items-center place-content-between">
+        <div className="flex flex-row items-center w-full">
+          <div className="w-5 mr-2 cursor-pointer">
+            <span {...provided.dragHandleProps}>
+              <img src="/images/drag.png" />
+            </span>
+          </div>
+          <p className="w-full">{description}</p>
+        </div>
+        <div className="w-5 ml-4 cursor-pointer">
+          <span onClick={handleDelete}>
+            <img src="/images/bin.png" />
+          </span>
+        </div>
       </div>
-      <span onClick={handleDelete}>
-        <img src="/images/bin.png" className="w-5 ml-2 cursor-pointer" />
-      </span>
     </div>
   );
 }
