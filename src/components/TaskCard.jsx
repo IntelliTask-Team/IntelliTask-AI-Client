@@ -17,7 +17,7 @@ function TaskCard({ task, tasks, updateTasks, provided, innerRef }) {
         .then(() => {
           updateTasksFrontend();
         })
-        .catch((error) => console.log(error));
+        .catch((err) => console.log(err));
     } else {
       updateTasksFrontend();
     }
@@ -41,7 +41,7 @@ function TaskCard({ task, tasks, updateTasks, provided, innerRef }) {
           const updatedTasks = tasks.map(task => task._id === updatedTask._id ? updatedTask : task);
           updateTasks(updatedTasks);
         })
-        .catch(error => console.log(error));
+        .catch(err => console.log(err));
       } else {
         const demoUpdatedTask = { ...task, completed: !task.completed };
         const updatedTasks = tasks.map(task => task._id === demoUpdatedTask._id ? demoUpdatedTask : task);

@@ -36,7 +36,7 @@ function AuthProviderWrapper(props) {
           navigate(path)
         }    
       })
-      .catch((error) => {
+      .catch((err) => {
         // If the server sends an error response (invalid token) 
         // Update state variables         
         setIsLoggedIn(false);

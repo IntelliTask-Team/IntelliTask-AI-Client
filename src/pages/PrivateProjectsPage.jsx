@@ -19,8 +19,8 @@ function PrivateProjectsPage() {
         setProjects(response.data);
         setIsLoading(false); 
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
         setIsLoading(false);
       });
   };
