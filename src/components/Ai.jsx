@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function Ai({ projectDescription, projectTitle }) {
+function Ai({ projectDescription, projectTitle, projectTasks }) {
   const storedToken = localStorage.getItem("authToken");
   const [response, setResponse] = useState(null);
   const [apiCalled, setApiCalled] = useState(false);
@@ -24,7 +24,7 @@ function Ai({ projectDescription, projectTitle }) {
       const size = Math.floor(Math.random() * 10 + 3);
       particle.style.width = `${size}px`;
       particle.style.height = `${size}px`;
-      particle.style.background = `hsl(${Math.random() * 90 + 90}, 70%, 50%)`;
+      particle.style.background = 'hsl(158, 97%, 23%)';
 
       const destinationX = x + (Math.random() - 0.5) * 2 * 75;
       const destinationY = y + (Math.random() - 0.5) * 2 * 75;
@@ -73,10 +73,21 @@ function Ai({ projectDescription, projectTitle }) {
     /* ***** END OF ON CLICK ANIMATION MADNESS ***** */
   }
   
+  const tasksArr = projectTasks.map(task => task.description)
+
   const handleApiCall = () => {
     if (!apiCalled) {
       setIsLoading(true);
-      const prompt = `You are an expert project manager. I aim to accomplish a project titled: ${projectTitle}. Here is the description of this project: ${projectDescription}. I would like you to provide me with a simple and efficient list of all the tasks I need to address to achieve it. You must respond in the language of the description. Keep it short and efficient.`;
+      const prompt = `You are an expert project manager. ${
+        projectTitle ? `I want to achieve a project called: ${projectTitle}.` : ""
+      } ${
+        projectDescription
+          ? `This is the description of this project: ${projectDescription}.`
+          : ""
+      } ${
+        tasksArr.length > 0 ? `These are the tasks I already come up with: ${tasksArr}.` : ""
+      } I want you to give me a simple list of all the tasks that I need to address to achieve it. Keep it short and efficient.`;
+      console.log(prompt)
       axios
       .post(`${import.meta.env.VITE_API_URL}/api/openai`, { prompt }, 
       {headers: { Authorization: `Bearer ${storedToken}` }}

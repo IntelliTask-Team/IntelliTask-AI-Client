@@ -137,6 +137,7 @@ function PrivateProjectDetailsPage() {
             <Ai
               projectDescription={project.description}
               projectTitle={project.title}
+              projectTasks={project.tasks}
             />
           )}
 
