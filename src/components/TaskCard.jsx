@@ -84,7 +84,7 @@ function TaskCard({ task, tasks, updateTasks, provided, innerRef }) {
             {description}
           </p>
         </div>
-        <div className="group-hover:opacity-100 opacity-100 lg:opacity-0 w-5 ml-4 cursor-pointer">
+        <div className="group-hover:opacity-100 opacity-100 xl:opacity-0 w-5 ml-4 cursor-pointer">
           <span onClick={handleDelete}>
             <img src="/images/bin.png" />
           </span>
