@@ -24,7 +24,7 @@ function Ai({ projectDescription, projectTitle, projectTasks }) {
       const size = Math.floor(Math.random() * 10 + 3);
       particle.style.width = `${size}px`;
       particle.style.height = `${size}px`;
-      particle.style.background = 'hsl(158, 97%, 23%)';
+      particle.style.background = "hsl(158, 97%, 23%)";
 
       const destinationX = x + (Math.random() - 0.5) * 2 * 75;
       const destinationY = y + (Math.random() - 0.5) * 2 * 75;
@@ -72,25 +72,31 @@ function Ai({ projectDescription, projectTitle, projectTasks }) {
   {
     /* ***** END OF ON CLICK ANIMATION MADNESS ***** */
   }
-  
-  const tasksArr = projectTasks.map(task => task.description)
+
+  const tasksArr = projectTasks.map((task) => task.description);
 
   const handleApiCall = () => {
     if (!apiCalled) {
       setIsLoading(true);
       const prompt = `You are an expert project manager. ${
-        projectTitle ? `I want to achieve a project called: ${projectTitle}.` : ""
+        projectTitle
+          ? `I want to achieve a project called: ${projectTitle}.`
+          : ""
       } ${
         projectDescription
           ? `This is the description of this project: ${projectDescription}.`
           : ""
       } ${
-        tasksArr.length > 0 ? `These are the tasks I already come up with: ${tasksArr}.` : ""
-      } I want you to give me a simple list of all the tasks that I need to address to achieve it. Keep it short and efficient.`;
-      console.log(prompt)
+        tasksArr.length > 0
+          ? `These are the tasks I already come up with: ${tasksArr}.`
+          : ""
+      } I want you to give me a simple list of all the tasks that I need to address to achieve it. You must respond in the same language in which the description is written. Keep it short and efficient.`;
+      console.log(prompt);
       axios
-      .post(`${import.meta.env.VITE_API_URL}/api/openai`, { prompt }, 
-      {headers: { Authorization: `Bearer ${storedToken}` }}
+        .post(
+          `${import.meta.env.VITE_API_URL}/api/openai`,
+          { prompt },
+          { headers: { Authorization: `Bearer ${storedToken}` } }
         )
         .then((apiResponse) => {
           setResponse(apiResponse.data.choices[0].message.content);
