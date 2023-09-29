@@ -26,13 +26,17 @@ function PrivateProjectsPage() {
       });
   };
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   const getUserDetails = () => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/auth/verify`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
-        setUsername(response.data.name);
+        setUsername(capitalizeFirstLetter(response.data.name));
       })
       .catch((err) => {
         console.log(err);
@@ -67,7 +71,9 @@ function PrivateProjectsPage() {
             ))
           ) : (
             <div className="text-center mt-10">
-              <p className="mb-6">You don't have any projects yet. Start one now!</p>
+              <p className="mb-6">
+                You don't have any projects yet. Start one now!
+              </p>
               <Link to={`/create-project`}>
                 <div className="inline-block text-sm px-4 py-3 leading-none font-medium border rounded bg-vert text-white border-transparent hover:bg-emerald-700 mt-4 lg:mt-0">
                   Get Started
