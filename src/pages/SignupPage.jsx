@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
 import axios from "axios";
+import { AuthContext } from "../context/auth.context";
 
 function SignupPage(props) {
   const [email, setEmail] = useState("");
@@ -8,7 +8,7 @@ function SignupPage(props) {
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const navigate = useNavigate();
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -25,7 +25,8 @@ function SignupPage(props) {
     axios
       .post(`${import.meta.env.VITE_API_URL}/auth/signup`, requestBody)
       .then((response) => {
-        navigate("/login");
+        storeToken(response.data.authToken);
+        authenticateUser("/projects");
       })
       .catch((err) => {
         const errorDescription = err.response.data.message;
