@@ -28,26 +28,35 @@ function TaskCard({ task, tasks, updateTasks, provided, innerRef }) {
     updateTasks(updatedTasks);
   };
 
-    // ***** CHECKBOX TASK *****
-    const handleCheckboxChange = () => {
-      if (isLoggedIn) {
-        axios.put(`${import.meta.env.VITE_API_URL}/api/tasks/${_id}`, {
-          completed: !task.completed
-        }, {
-          headers: { Authorization: `Bearer ${storedToken}` }
-        })
-        .then(response => {
+  // ***** CHECKBOX TASK *****
+  const handleCheckboxChange = () => {
+    if (isLoggedIn) {
+      axios
+        .put(
+          `${import.meta.env.VITE_API_URL}/api/tasks/${_id}`,
+          {
+            completed: !task.completed,
+          },
+          {
+            headers: { Authorization: `Bearer ${storedToken}` },
+          }
+        )
+        .then((response) => {
           const updatedTask = response.data;
-          const updatedTasks = tasks.map(task => task._id === updatedTask._id ? updatedTask : task);
+          const updatedTasks = tasks.map((task) =>
+            task._id === updatedTask._id ? updatedTask : task
+          );
           updateTasks(updatedTasks);
         })
-        .catch(err => console.log(err));
-      } else {
-        const demoUpdatedTask = { ...task, completed: !task.completed };
-        const updatedTasks = tasks.map(task => task._id === demoUpdatedTask._id ? demoUpdatedTask : task);
-        updateTasks(updatedTasks);
-      }
-    };
+        .catch((err) => console.log(err));
+    } else {
+      const demoUpdatedTask = { ...task, completed: !task.completed };
+      const updatedTasks = tasks.map((task) =>
+        task._id === demoUpdatedTask._id ? demoUpdatedTask : task
+      );
+      updateTasks(updatedTasks);
+    }
+  };
 
   return (
     <div
@@ -62,20 +71,25 @@ function TaskCard({ task, tasks, updateTasks, provided, innerRef }) {
               <img src="/images/drag.png" />
             </span>
           </div>
-          <input 
-        type="checkbox" 
-        checked={task.completed} 
-        onChange={handleCheckboxChange} 
-        className="mr-2"
-      />
-          <p className="w-full" style={{textDecoration: task.completed ? 'line-through' : 'none'}}>{description}</p>
+          <input
+            type="checkbox"
+            checked={task.completed}
+            onChange={handleCheckboxChange}
+            className="mr-2"
+          />
+          <p
+            className="w-full"
+            style={{ textDecoration: task.completed ? "line-through" : "none" }}
+          >
+            {description}
+          </p>
         </div>
-        <div className="group-hover:opacity-100 opacity-0 w-5 ml-4 cursor-pointer" >
+        <div className="group-hover:opacity-100 opacity-100 lg:opacity-0 w-5 ml-4 cursor-pointer">
           <span onClick={handleDelete}>
             <img src="/images/bin.png" />
           </span>
         </div>
-        </div>
+      </div>
     </div>
   );
 }
