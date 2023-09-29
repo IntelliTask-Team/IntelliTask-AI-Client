@@ -49,6 +49,12 @@ function PrivateProjectsPage() {
   }, []);
 
   return (
+      isLoading ? (
+        <div className="flex flex-col justify-center m-auto w-20">
+          <img src="/images/waiting.gif" alt="Loading GIF" />
+        </div>
+      ) : (
+        <>
     <div className="HomePage relative pb-20 px-5 md:px-10 w-full 2xl:w-1/2 max-w-4xl mb-20">
       <h1 className="mt-20 mb-5 text-3xl font-bold tracking-tight text-gray-900 text-center">
         {username ? `${username}'s Projects` : "My Projects"}
@@ -59,12 +65,6 @@ function PrivateProjectsPage() {
         </p>
       </Link>
 
-      {isLoading ? (
-        <div className="flex flex-col justify-center m-auto w-20">
-          <img src="/images/waiting.gif" alt="Loading GIF" />
-        </div>
-      ) : (
-        <>
           {projects.length ? (
             projects.map((project) => (
               <ProjectCard key={project._id} {...project} />
@@ -76,14 +76,14 @@ function PrivateProjectsPage() {
               </p>
               <Link to={`/create-project`}>
                 <div className="inline-block text-sm px-4 py-3 leading-none font-medium border rounded bg-vert text-white border-transparent hover:bg-emerald-700 mt-4 lg:mt-0">
-                  Get Started
+                Get Started
                 </div>
               </Link>
             </div>
           )}
-        </>
-      )}
-    </div>
+        </div>
+      </>
+    )
   );
 }
 
